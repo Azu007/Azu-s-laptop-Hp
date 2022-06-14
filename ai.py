@@ -1,7 +1,14 @@
+# from lib2to3.pytree import _Results
+# from unittest import result
+import webbrowser
 import pyaudio
 import pyttsx3
 import speech_recognition as sr
 import datetime
+import wikipedia
+import os
+import random
+
 
 
 engine = pyttsx3.init('sapi5')
@@ -37,7 +44,7 @@ def takeCommand():
     try:
         print("Recognizing...")
         query=r.recognize_google(audio, language='en-in')
-        print(f"user said:,{query}\n") 
+        print(f"user said:{query}\n") 
     
     except Exception as e:
         # print(e)
@@ -49,3 +56,40 @@ def takeCommand():
 if __name__ == "__main__":
     wishME()
     takeCommand()
+    # while True:
+    if 1:
+        query = takeCommand().lower()
+
+
+
+        if 'Wikipedia' in query:
+            speak('Searching Wikipedia.....')
+            query = query.replace("wikipedia", "")
+            results = wikipedia.summary(query, sentences=2)
+            speak("According to Wikipedia")
+            print(results)
+            speak(results)
+
+        elif 'open youtube' in query:
+            webbrowser.open("youtube.com")
+
+        elif 'open google' in query:
+            webbrowser.open("google.com")
+
+        elif 'open stackoverflow' in query:
+            webbrowser.open("stackoverflow.com")  
+
+        elif 'play music' in query:
+            music_dir = 'F:\\Flix '
+            songs = os.listdir(music_dir)
+            songs = random.randint(0,50)
+            print(songs)
+            os.startfile(os.path.join(music_dir, songs)) 
+
+        elif 'the time' in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            speak(f"Sir, the time is {strTime}")              
+        
+        elif 'open vs code' in query:
+            codePath = "C:\\Users\\Md-Azmat\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            os.startfile(codePath)
