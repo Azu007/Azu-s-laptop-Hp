@@ -1,5 +1,8 @@
 # from lib2to3.pytree import _Results
 # from unittest import result
+import glob
+import time
+import sys
 import webbrowser
 import pyaudio
 import pyttsx3
@@ -57,7 +60,7 @@ if __name__ == "__main__":
     wishME()
     takeCommand()
     # while True:
-    if 1:
+    if 2:
         query = takeCommand().lower()
 
 
@@ -80,11 +83,15 @@ if __name__ == "__main__":
             webbrowser.open("stackoverflow.com")  
 
         elif 'play music' in query:
-            music_dir = 'F:\\Flix '
+           
+
+            music_dir = 'C:\\Users\\Md-Azmat\\Desktop\\SnapTube'
             songs = os.listdir(music_dir)
-            songs = random.randint(0,50)
+            # songs = random.randint
+            # play = str(songs)
             print(songs)
-            os.startfile(os.path.join(music_dir, songs)) 
+            os.startfile(os.path.join(music_dir, random.choice (songs))) 
+
 
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
