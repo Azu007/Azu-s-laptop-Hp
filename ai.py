@@ -87,8 +87,6 @@ if __name__ == "__main__":
 
             music_dir = 'C:\\Users\\Md-Azmat\\Desktop\\SnapTube'
             songs = os.listdir(music_dir)
-            # songs = random.randint
-            # play = str(songs)
             print(songs)
             os.startfile(os.path.join(music_dir, random.choice (songs))) 
 
